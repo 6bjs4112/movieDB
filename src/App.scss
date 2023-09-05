@@ -138,13 +138,13 @@ header{
     input{
       height: 41px;
       border-color: transparent;
-      border-bottom: 2px solid #aaaaaa7b;
+      border-bottom: 1px solid #aaa;
       background-color: transparent;
       transition: border-bottom 0.3s ease-in-out;
       &:focus{
-        border-bottom: 2px solid red;
-        color: white;
+        border-bottom: 1px solid red;
         outline: none;
+        color: #fff;
       }
     }
     button{
@@ -168,7 +168,7 @@ header{
       display: flex; flex-direction: column;
       justify-content: center; align-items: center;
       padding: 10px;
-      img{border-radius: 20px;}
+      img{border-radius: 21px;}
       h2{color: white;text-align: center;}
     }
   }
@@ -201,4 +201,26 @@ header{
 }
 .header-scrolled{
   background-color: red;
+}
+
+//디테일 페이지
+.detail{
+  width: 75vw; height: 75vh;
+
+  position: fixed; 
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+
+  border: 2px solid black;
+  border-radius: 20px;
+  background-color: white;
+  z-index: 100;
+  display: none;
+  .pop{
+    color: black;
+  }
+  p{color: #000;}
+}
+.detail.active{
+  display: block;
 }

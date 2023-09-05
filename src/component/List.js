@@ -13,17 +13,18 @@ export default function List() {
     const [movieDataT, setMovieDataT] = useState([]);
     const [tvDataP, setTvDataP] = useState([]);
     const [tvDataT, setTvDataT] = useState([]);
+
     const dbData = axios.create({
         baseURL: 'https://api.themoviedb.org/3',
         params: {api_key:'f89a6c1f22aca3858a4ae7aef10de967'}
     })
     //트랜딩 무비
-    useEffect(function(){
+    useEffect(function(){//useEffect에는 async쓰면 안됨`    
         dbData
         .get('/movie/popular')
         .then(res=>{
-            const moviePop = res.data;
-            setMovieDataP(moviePop.results);
+            // const moviePop = res.data;
+            setMovieDataP(res.data.results);
         })
     },[])
     //탑 무비
@@ -31,8 +32,7 @@ export default function List() {
         dbData
         .get('/movie/top_rated')
         .then(res=>{
-            const movieTop = res.data;
-            setMovieDataT(movieTop.results);
+            setMovieDataT(res.data.results);
         })
     },[])
     //트랜딩 티비
@@ -40,8 +40,7 @@ export default function List() {
         dbData
         .get('/tv/popular')
         .then(res=>{
-            const tvPop = res.data;
-            setTvDataP(tvPop.results);
+            setTvDataP(res.data.results);
         })
     },[])
     //탑 티비
@@ -49,12 +48,21 @@ export default function List() {
         dbData
         .get('/tv/top_rated')
         .then(res=>{
-            const tvTop = res.data;
-            setTvDataT(tvTop.results);
+            setTvDataT(res.data.results);
         })
     },[])
     //이동용 네비
     const navigate = useNavigate();
+
+    //클릭 디테일창
+    const [clickDetail, setClickDetail] = useState(null);
+    const [isActive, setIsActive] = useState(false);
+
+    const movieClick = (mov) => {
+        setIsActive(!isActive);
+        setClickDetail(mov);
+        console.log(mov);
+    };
 
     return (
         <>
@@ -94,7 +102,7 @@ export default function List() {
             >
                 {
                     movieDataP.map((e)=>(
-                        <SwiperSlide key={e.id} className='swiper-slide'>
+                        <SwiperSlide key={e.id} className='swiper-slide' onClick={()=>movieClick(e)}>
                             <img src={`https://image.tmdb.org/t/p/w200${e.poster_path}`}/>
                             <h3>{e.title}</h3>
                         </SwiperSlide>
@@ -111,11 +119,10 @@ export default function List() {
                 modules={[FreeMode]}
                 className="mySwiper"
                 spaceBetween={10}
-                
             >
                 {
                     movieDataT.map((e)=>(
-                        <SwiperSlide key={e.id} className='swiper-slide'>
+                        <SwiperSlide key={e.id} className='swiper-slide'onClick={()=>movieClick(e)}>
                             <img src={`https://image.tmdb.org/t/p/w200${e.poster_path}`}/>
                             <h3>{e.title}</h3>
                         </SwiperSlide>
@@ -135,7 +142,7 @@ export default function List() {
             >
                 {
                     tvDataP.map((e)=>(
-                        <SwiperSlide key={e.id} className='swiper-slide'>
+                        <SwiperSlide key={e.id} className='swiper-slide'onClick={()=>movieClick(e)}>
                             <img src={`https://image.tmdb.org/t/p/w200${e.poster_path}`}/>
                             <h3>{e.name}</h3>
                         </SwiperSlide>
@@ -155,13 +162,27 @@ export default function List() {
             >
                 {
                     tvDataT.map((e)=>(
-                        <SwiperSlide key={e.id} className='swiper-slide'>
+                        <SwiperSlide key={e.id} className='swiper-slide'onClick={()=>movieClick(e)}>
                             <img src={`https://image.tmdb.org/t/p/w200${e.poster_path}`}/>
                             <h3>{e.name}</h3>
                         </SwiperSlide>
                     ))
                 }
             </Swiper>
+        </section>
+
+        <section className={`detail ${isActive ? 'active' : ''}`}>
+            <button onClick={movieClick}>X</button>
+            {
+                clickDetail && (
+                    <>
+                        <h2 className='pop'>{clickDetail.title}</h2>
+                        <h2 className='pop'>{clickDetail.name}</h2>
+                        <p>{clickDetail.overview}</p>
+                        <img src={`https://image.tmdb.org/t/p/w300${clickDetail.poster_path}`}/>
+                    </>
+                )
+            }
         </section>
         </>
     )

@@ -164,14 +164,14 @@ header a:hover {
 .serMov div input {
   height: 41px;
   border-color: transparent;
-  border-bottom: 2px solid rgba(170, 170, 170, 0.4823529412);
+  border-bottom: 1px solid #aaa;
   background-color: transparent;
   transition: border-bottom 0.3s ease-in-out;
 }
 .serMov div input:focus {
-  border-bottom: 2px solid red;
-  color: white;
+  border-bottom: 1px solid red;
   outline: none;
+  color: #fff;
 }
 .serMov div button {
   margin-left: 10px;
@@ -200,7 +200,7 @@ header a:hover {
   padding: 10px;
 }
 .serMov ul li img {
-  border-radius: 20px;
+  border-radius: 21px;
 }
 .serMov ul li h2 {
   color: white;
@@ -240,4 +240,28 @@ header a:hover {
 
 .header-scrolled {
   background-color: red;
+}
+
+.detail {
+  width: 75vw;
+  height: 75vh;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 2px solid black;
+  border-radius: 20px;
+  background-color: white;
+  z-index: 100;
+  display: none;
+}
+.detail .pop {
+  color: black;
+}
+.detail p {
+  color: #000;
+}
+
+.detail.active {
+  display: block;
 }/*# sourceMappingURL=App.css.map */

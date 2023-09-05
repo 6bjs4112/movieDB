@@ -18,8 +18,7 @@ export default function Movies() {
         dbData
         .get(`/movie/upcoming?page=1`,'/movie/popular','/movie/top_rated')
         .then(res=>{
-            const movieSer = res.data;
-            setMovieData(movieSer.results);
+            setMovieData(res.data.results);
         })
     },[])
 
@@ -27,7 +26,7 @@ export default function Movies() {
     const handleSearch = () => {
         searchCount+=1;
         dbData
-        .get(`/search/movie?query=${searchQuery}`) // 검색어를 포함하여 API 호출
+        .get(`/search/movie?query=${searchQuery}`)
         .then((res) => {
             const movieSer = res.data;
             setMovieData(movieSer.results);

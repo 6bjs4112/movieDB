@@ -17,9 +17,7 @@ export default function TvSeries() {
         dbData
         .get('/tv/top_rated')
         .then(res=>{
-            const tvSer = res.data;
-            console.log(tvSer);
-            setTvData(tvSer.results);
+            setTvData(res.data.results);
         })
     },[])
 
@@ -49,7 +47,6 @@ export default function TvSeries() {
             setTvData([...tvData,...tvMore.results])
         })
     }
-    //검색창 애니메이션
 
     return (
         <>
