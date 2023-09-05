@@ -61,7 +61,7 @@ export default function List() {
     const movieClick = (mov) => {
         setIsActive(!isActive);
         setClickDetail(mov);
-        console.log(mov);
+        // console.log(mov);
     };
 
     return (
