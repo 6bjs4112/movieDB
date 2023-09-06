@@ -264,4 +264,8 @@ header a:hover {
 
 .detail.active {
   display: block;
+}
+
+.detailPage {
+  border: 2px solid dodgerblue;
 }/*# sourceMappingURL=App.css.map */

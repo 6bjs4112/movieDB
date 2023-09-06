@@ -1,5 +1,5 @@
 import React, { useEffect, useState, } from 'react'
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios'
 //스와이퍼
 
@@ -76,7 +76,7 @@ export default function List() {
                         backgroundImage: `url('https://image.tmdb.org/t/p/original${e.backdrop_path}')`,
                     }} >    
                             <div className='left'>
-                                <h1 data-aos="fade-down-right">{e.title}</h1>
+                                <h1 data-aos="fade-down-right"><Link to={`movie/${e.id}`}>{e.title}</Link></h1>
                                 <p>{e.overview}</p>
                                 <button>Watch now</button>
                                 <button>Watch trailer</button>

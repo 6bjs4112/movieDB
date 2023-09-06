@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
+import { Link } from 'react-router-dom';
 
 let clickCount = 1;
 let searchCount = 0;
@@ -43,7 +44,7 @@ export default function TvSeries() {
         dbData.get(`/tv/top_rated?page=${clickCount}`)
         .then((res) => {
             const tvMore = res.data;
-            // console.log(tvMore);
+            console.log(tvMore);
             setTvData([...tvData,...tvMore.results])
         })
     }
@@ -63,7 +64,7 @@ export default function TvSeries() {
             <ul>
                 {tvData.map((tv) => (
                 <li key={tv.id}>
-                    <img src={`https://image.tmdb.org/t/p/w200${tv.poster_path}`}/>
+                    <Link to={`/tv/${tv.id}`}><img src={`https://image.tmdb.org/t/p/w200${tv.poster_path}`}/></Link>
                     <h2>{tv.name}</h2>
                 </li>
                 ))}

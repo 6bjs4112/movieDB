@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
+import { Link } from 'react-router-dom';
 
 let clickCount = 1;
 let searchCount = 0;
@@ -71,7 +72,7 @@ export default function Movies() {
             <ul>
                 {movieData.map((movie) => (
                 <li key={movie.id}>
-                    <img src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}/>
+                    <Link to={`/movie/${movie.id}`}><img src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}/></Link>
                     <h2>{movie.title}</h2>
                 </li>
                 ))}

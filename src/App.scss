@@ -41,6 +41,11 @@ header{
         h1{
           color: white;
           font-size: 5rem;
+          a{
+            text-decoration: none; color: white;
+            transition: .5s;
+            &:hover{ color:red; }
+          }
         }
         p{
           color: white;
@@ -223,4 +228,25 @@ header{
 }
 .detail.active{
   display: block;
+}
+.detailPage{
+  color: white;
+  .backdrop{ width: 100vw; }
+  h3{color: white; font-size: 50px;}
+  .genresTab{
+    margin-bottom: 20px;
+    span{
+      padding: 5px 10px; margin: 5px;
+      border: 1px solid white; border-radius: 25px;
+      color: white;
+    }
+  }
+  p{color: white;}
+  a{
+    text-decoration: none;
+    padding: 5px 10px; margin-right: 5px;
+    border: 2px solid white;
+    border-radius: 25px;
+    color: white;
+  }
 }
