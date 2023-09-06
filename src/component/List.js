@@ -172,17 +172,21 @@ export default function List() {
         </section>
 
         <section className={`detail ${isActive ? 'active' : ''}`}>
-            <button onClick={movieClick}>X</button>
-            {
-                clickDetail && (
-                    <>
-                        <h2 className='pop'>{clickDetail.title}</h2>
-                        <h2 className='pop'>{clickDetail.name}</h2>
-                        <p>{clickDetail.overview}</p>
-                        <img src={`https://image.tmdb.org/t/p/w300${clickDetail.poster_path}`}/>
-                    </>
-                )
-            }
+            <div className='wrapD'>
+                <button onClick={movieClick}>X</button>
+                {
+                    clickDetail && (
+                        <>  
+                            <div className='textbox'>
+                                <h2 className='pop'>{clickDetail.title}</h2>
+                                <h2 className='pop'>{clickDetail.name}</h2>
+                                <p>{clickDetail.overview}</p>
+                                <img src={`https://image.tmdb.org/t/p/w300${clickDetail.poster_path}`}/>
+                            </div>
+                        </>
+                    )
+                }
+            </div>
         </section>
         </>
     )

@@ -221,10 +221,17 @@ header{
   background-color: white;
   z-index: 100;
   display: none;
-  .pop{
-    color: black;
+  .wrapD{
+    display: flex; flex-direction: column;
+    align-items: flex-end;
+    button{width: 25px; height: 25px;}
+    .textbox{
+      .pop{
+        color: black;
+      }
+      p{color: #000;}
+    }
   }
-  p{color: #000;}
 }
 .detail.active{
   display: block;
